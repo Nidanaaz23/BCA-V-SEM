@@ -1,26 +1,18 @@
-           
-<html>              
-<body>             
-<h2>Student Form</h2>
-<form method="POST" action="">               
-Name: <input type="text" name="name" required><br><br>               
-Age: <input type="number" name="age" required><br><br>                    
-<input type="submit" name="submit" value="Submit">                
-</form>            
-<?php            
-if(isset($_POST['submit']))               
-{                
-$con = mysqli_connect("localhost","root","","college 1");                
-$name = $_POST['name'];                 
-$age = $_POST['age'];                 
-$sql = "INSERT INTO student(name, age)                
-VALUES('$name', '$age')";                  
-if(mysqli_query($con, $sql))                  
-echo "Record inserted successfully";                                
-else               
-echo "Error inserting record";                 
-mysqli_close($con);              
+<?php
+// Create and open a file in write mode
+$file = fopen("student.txt", "w");
+
+// Check whether the file is opened successfully
+if ($file) {
+    // Write data into the file
+    fwrite($file, "Welcome to PHP Programming!\n");
+    fwrite($file, "This is a file handling example.");
+
+    // Close the file
+    fclose($file);
+
+    echo "File created and data written successfully.";
+} else {
+    echo "Unable to create the file.";
 }
-?>               
-</body>                 
-</html>   
+?>
